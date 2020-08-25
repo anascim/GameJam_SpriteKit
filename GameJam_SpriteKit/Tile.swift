@@ -34,7 +34,7 @@ class Tile: SKSpriteNode {
         }
     }
     
-    func moveIn(_ dir: Direction, completion: @escaping () -> Void) {
+    func moveIn(_ blob: Blob, _ dir: Direction) {
         switch dir {
         case .Up:
             print("up")
@@ -45,7 +45,8 @@ class Tile: SKSpriteNode {
         case .Right:
             print("right")
         }
-        completion()
+        blob.position = self.position
+        blob.tile = self
     }
     
     func getTile(_ dir: Direction) -> Tile? {

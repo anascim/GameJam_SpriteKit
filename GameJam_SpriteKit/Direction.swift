@@ -14,8 +14,8 @@ enum Direction {
     
     var coord: (Int, Int) {
         switch self {
-        case .Up:    return ( 0, 1)
-        case .Down:  return ( 0,-1)
+        case .Up:    return ( 0,-1)
+        case .Down:  return ( 0, 1)
         case .Left:  return (-1, 0)
         case .Right: return ( 1, 0)
         }

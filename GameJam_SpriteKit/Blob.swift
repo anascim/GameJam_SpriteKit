@@ -13,15 +13,11 @@ class Blob: SKNode {
     unowned var grid: Grid
     unowned var tile: Tile
     
-    var isMoving = false
-    
     var sprite: SKSpriteNode
     
     func move(_ dir: Direction) {
-        if isMoving { return }
-        isMoving = true
-        tile.moveIn(dir) {
-            self.isMoving = false
+        if let t = tile.getTile(dir) {
+            t.moveIn(self, dir)
         }
     }
     

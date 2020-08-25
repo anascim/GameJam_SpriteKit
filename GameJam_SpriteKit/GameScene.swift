@@ -11,7 +11,9 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var blob: Blob!
+    var blob1: Blob!
+    var blob2: Blob!
+    var level: Level
     
     var frameCenter: CGPoint {
         return  CGPoint(x: self.frame.midX, y: self.frame.midY)
@@ -23,32 +25,68 @@ class GameScene: SKScene {
         ["g", "g", "y"]
     ]
     
+    init(level: Level, size: CGSize) {
+        self.level = level
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
-        self.view?.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:))))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
+        rightSwipe.direction = .right
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
+        leftSwipe.direction = .left
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
+        downSwipe.direction = .down
+        let upSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:)))
+        upSwipe.direction = .up
+            
+        self.view?.addGestureRecognizer(rightSwipe)
+        self.view?.addGestureRecognizer(leftSwipe)
+        self.view?.addGestureRecognizer(downSwipe)
+        self.view?.addGestureRecognizer(upSwipe)
         
         let centerDot = SKShapeNode(circleOfRadius: 30)
         centerDot.position = frameCenter
         addChild(centerDot)
         
-        let grid = Grid(tileSet: tiles)
-        grid.center = frameCenter
-        addChild(grid)
+        let topGrid = Grid(tileSet: level.top)
+        topGrid.center = CGPoint(x: frameCenter.x, y: frameCenter.y + 200)
+        addChild(topGrid)
         
-        let blob = Blob(tile: grid.tiles[3])
-        grid.addChild(blob)
+        blob1 = Blob(tile: topGrid.tiles[3])
+        topGrid.addChild(blob1)
+        
+        let bottomGrid = Grid(tileSet: level.bottom)
+        bottomGrid.center = CGPoint(x: frameCenter.x, y: frameCenter.y - 200)
+        addChild(bottomGrid)
+        
+        blob2 = Blob(tile: bottomGrid.tiles[2])
+        bottomGrid.addChild(blob2)
     }
     
     @objc
     public func swipe(_ sender: UISwipeGestureRecognizer) {
         switch sender.direction {
         case .up:
-            blob.move(.Up)
+            print("up")
+            blob1.move(.Up)
+            blob2.move(.Up)
         case .down:
-            blob.move(.Down)
+            print("down")
+            blob1.move(.Down)
+            blob2.move(.Down)
         case .left:
-            blob.move(.Left)
+            print("left")
+            blob1.move(.Left)
+            blob2.move(.Left)
         case .right:
-            blob.move(.Right)
+            print("right")
+            blob1.move(.Right)
+            blob2.move(.Right)
         default:
             print("unknowned swipe direction")
         }
