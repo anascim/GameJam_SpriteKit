@@ -11,6 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var blob: Blob!
+    
     var frameCenter: CGPoint {
         return  CGPoint(x: self.frame.midX, y: self.frame.midY)
     }
@@ -22,6 +24,8 @@ class GameScene: SKScene {
     ]
     
     override func didMove(to view: SKView) {
+        self.view?.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: #selector(swipe(_:))))
+        
         let centerDot = SKShapeNode(circleOfRadius: 30)
         centerDot.position = frameCenter
         addChild(centerDot)
@@ -29,11 +33,29 @@ class GameScene: SKScene {
         let grid = Grid(tileSet: tiles)
         grid.center = frameCenter
         addChild(grid)
+        
+        let blob = Blob(tile: grid.tiles[3])
+        grid.addChild(blob)
+    }
+    
+    @objc
+    public func swipe(_ sender: UISwipeGestureRecognizer) {
+        switch sender.direction {
+        case .up:
+            blob.move(.Up)
+        case .down:
+            blob.move(.Down)
+        case .left:
+            blob.move(.Left)
+        case .right:
+            blob.move(.Right)
+        default:
+            print("unknowned swipe direction")
+        }
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        
     }
     
     func touchMoved(toPoint pos : CGPoint) {

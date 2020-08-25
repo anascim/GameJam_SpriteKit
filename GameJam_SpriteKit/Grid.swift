@@ -23,17 +23,17 @@ class Grid: SKNode {
     }
     
     init(tileSet: [[Character]]) {
+        center = .zero
         self.tileSet = tileSet
+        super.init()
         for row in 0..<tileSet.count {
             for col in 0..<tileSet[0].count {
-                let tile = Tile(tileSet[row][col], (col, row), tileSize, tileOffset)
+                let tile = Tile(tileSet[row][col], (col, row), tileSize, tileOffset, self)
                 tile.position = CGPoint(x: CGFloat(col) * (tileSize.width + tileOffset),
                 y: CGFloat(row) * (-tileSize.height - tileOffset))
                 tiles.append(tile)
             }
         }
-        center = .zero
-        super.init()
         tiles.forEach { (t) in
             addChild(t)
         }

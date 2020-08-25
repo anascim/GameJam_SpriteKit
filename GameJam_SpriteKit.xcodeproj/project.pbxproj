@@ -16,6 +16,7 @@
 		8CAD286F24F586F0009B87B7 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAD286E24F586F0009B87B7 /* Grid.swift */; };
 		8CAD287124F58714009B87B7 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAD287024F58714009B87B7 /* Tile.swift */; };
 		8CAD287324F5879C009B87B7 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAD287224F5879C009B87B7 /* Direction.swift */; };
+		8CAD287524F59AB7009B87B7 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAD287424F59AB7009B87B7 /* Blob.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8CAD286E24F586F0009B87B7 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		8CAD287024F58714009B87B7 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		8CAD287224F5879C009B87B7 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		8CAD287424F59AB7009B87B7 /* Blob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				8CAD287024F58714009B87B7 /* Tile.swift */,
 				8CAD287224F5879C009B87B7 /* Direction.swift */,
 				8CAD285E24F45D45009B87B7 /* GameViewController.swift */,
+				8CAD287424F59AB7009B87B7 /* Blob.swift */,
 				8CAD286024F45D45009B87B7 /* Main.storyboard */,
 				8CAD286324F45D47009B87B7 /* Assets.xcassets */,
 				8CAD286524F45D47009B87B7 /* LaunchScreen.storyboard */,
@@ -149,6 +152,7 @@
 			files = (
 				8CAD285D24F45D45009B87B7 /* GameScene.swift in Sources */,
 				8CAD285F24F45D45009B87B7 /* GameViewController.swift in Sources */,
+				8CAD287524F59AB7009B87B7 /* Blob.swift in Sources */,
 				8CAD287124F58714009B87B7 /* Tile.swift in Sources */,
 				8CAD285724F45D45009B87B7 /* AppDelegate.swift in Sources */,
 				8CAD286F24F586F0009B87B7 /* Grid.swift in Sources */,
