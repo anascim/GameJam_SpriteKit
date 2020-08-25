@@ -11,11 +11,24 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    var frameCenter: CGPoint {
+        return  CGPoint(x: self.frame.midX, y: self.frame.midY)
+    }
+    
+    let tiles: [[Character]] = [
+        ["r", "b", "g"],
+        ["b", "b", "g"],
+        ["g", "g", "y"]
+    ]
     
     override func didMove(to view: SKView) {
-        let shape = SKShapeNode(circleOfRadius: 30)
-        shape.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        addChild(shape)
+        let centerDot = SKShapeNode(circleOfRadius: 30)
+        centerDot.position = frameCenter
+        addChild(centerDot)
+        
+        let grid = Grid(tileSet: tiles)
+        grid.center = frameCenter
+        addChild(grid)
     }
     
     
